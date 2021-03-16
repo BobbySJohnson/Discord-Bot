@@ -189,12 +189,12 @@ async def on_ready():
     print('Logged in as {0.user}'.format(client))
     await start_chrome()
 
-@client.event 
-async def on_message(message):
-  if message.author.bot: return
-  if message.content.startswith('.'):
-    await message.add_reaction('✔️')
-  await client.process_commands(message)
+#@client.event 
+#async def on_message(message):
+  #if message.author.bot: #return
+  #if message.content.startswith('.'):
+    #await message.add_reaction('✔️')
+  #await client.process_commands(message)
 
 
 @tasks.loop(seconds=60)
