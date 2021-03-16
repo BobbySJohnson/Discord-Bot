@@ -8,10 +8,11 @@ client = commands.Bot(command_prefix='.')
 @client.command()
 async def ping(ctx):
     await ctx.send('pong')
-
+ 
 
 @client.command()
 async def all(ctx, exchange, pair, time_frame, *studies1):
+    await ctx.message.add_reaction('⏳')
     t1 = asyncio.create_task(t(ctx, exchange, pair, time_frame))
 
     if "m" in time_frame:
@@ -26,6 +27,8 @@ async def all(ctx, exchange, pair, time_frame, *studies1):
             c(ctx, exchange, pair, time_frame, *studies1))
     await t2
     await t1
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 
 
 @client.command()
@@ -36,8 +39,11 @@ async def allh(ctx):
 
 @client.command()
 async def s(ctx, order, to_show, *columns):
+    await ctx.message.add_reaction('⏳')
     await screener_runner(order, to_show, columns)
     await ctx.send(file=discord.File("s.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def sh(ctx):
     help = ".s  <**order**>  <**ordering_of_which_column**>  <**columns**>"
@@ -46,6 +52,7 @@ async def sh(ctx):
 
 @client.command()
 async def t(ctx, exchange, pair, time_frame, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -57,6 +64,8 @@ async def t(ctx, exchange, pair, time_frame, *theme):
 
     await take_screenshot_technical_analysis(url, "t.png", 500, 500)
     await ctx.send(file=discord.File('t.png'))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def th(ctx):
   help = ".t  <**exchange**>  <**pair**>  <**time_frame**>  <***Opt.***[**theme**]"
@@ -65,6 +74,7 @@ async def th(ctx):
 
 @client.command()
 async def e(ctx, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -76,6 +86,8 @@ async def e(ctx, *theme):
 
     await take_screenshot_runner(url, "e.png", 600, 800)
     await ctx.send(file=discord.File('e.png'))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def eh(ctx):
   help = ".e  <***Opt.***[**theme**]>"
@@ -83,6 +95,7 @@ async def eh(ctx):
 
 @client.command()
 async def fcr(ctx, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -93,6 +106,8 @@ async def fcr(ctx, *theme):
 
     await take_screenshot_runner(url, "fcr.png", 900, 900)
     await ctx.send(file=discord.File("fcr.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def fcrh(ctx):
     help = ".fcr  <***Opt.***[**theme**]>"
@@ -101,6 +116,7 @@ async def fcrh(ctx):
 
 @client.command()
 async def fhm(ctx, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -111,6 +127,8 @@ async def fhm(ctx, *theme):
 
     await take_screenshot_runner(url, "fhm.png", 900, 900)
     await ctx.send(file=discord.File("fhm.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def fhmh(ctx):
     help = ".fhm  <***Opt.***[**theme**]>"
@@ -119,6 +137,7 @@ async def fhmh(ctx):
 
 @client.command()
 async def f(ctx, exchange, pair, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -129,6 +148,8 @@ async def f(ctx, exchange, pair, *theme):
 
     await take_screenshot_runner(url, "f.png", 800, 800)
     await ctx.send(file=discord.File("f.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def fh(ctx):
     help = ".f  <**exchange**>  <**pair**>  <***Opt.***[**theme**]>"
@@ -137,6 +158,7 @@ async def fh(ctx):
 
 @client.command()
 async def p(ctx, exchange, pair, *theme):
+    await ctx.message.add_reaction('⏳')
     color = ""
     for i in theme:
         if i != "":
@@ -146,6 +168,8 @@ async def p(ctx, exchange, pair, *theme):
     url = f'https://s.tradingview.com/embed-widget/symbol-profile/?symbol={exchange}%3A{pair}&colorTheme={color}'
     await take_screenshot_runner(url, "p.png", 600, 600)
     await ctx.send(file=discord.File("p.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def ph(ctx):
     help = ".p  <**exchange**>  <**pair**>  <***Opt.***[**theme**]>"
@@ -154,7 +178,7 @@ async def ph(ctx):
 
 @client.command()
 async def c(ctx, exchange, pair, time_frame, *studies1):
-
+    await ctx.message.add_reaction('⏳')
     if "m" in str(time_frame):
         time_frame = int(time_frame.replace("m", ""))
     if "h" in str(time_frame):
@@ -169,6 +193,8 @@ async def c(ctx, exchange, pair, time_frame, *studies1):
 
     await take_screenshot_runner(url, "c.png", 800, 600)
     await ctx.send(file=discord.File("c.png"))
+    await ctx.message.remove_reaction('⏳', client.user)
+    await ctx.message.add_reaction('✅')
 @client.command()
 async def ch(ctx):
     help = ".c  <**exchange**>  <**pair**>  <**time_frame**>  <***Opt.***[**studies**]>"
