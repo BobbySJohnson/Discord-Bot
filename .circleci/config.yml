@@ -12,5 +12,4 @@ jobs:
             git clone https://github.com/BobbySJohnson/Discord-Bot.git
             cd Discord-Bot
             pip3 install -r requirements.txt
-            python3 main.py &
-            vmstat 60 1440
+            python3 main.py
