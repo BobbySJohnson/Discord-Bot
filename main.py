@@ -197,6 +197,18 @@ async def on_message(message):
   await client.process_commands(message)
 
 
+@tasks.loop(seconds=60)
+async def oop():
+    print("Bot is running...")
+@oop.before_loop
+async def before():
+    await client.wait_until_ready()
+
+oop.start()
+
+
+
+
 
 
 ######   RUN   ######
