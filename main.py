@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands, tasks
 from browser import *
-from screener import *
 import os
 
 client = commands.Bot(command_prefix='.')
@@ -188,6 +187,7 @@ async def h(ctx):
 @client.event
 async def on_ready():
     print('Logged in as {0.user}'.format(client))
+    await start_chrome()
 
 @client.event 
 async def on_message(message):
