@@ -10,7 +10,7 @@ async def do_browsing(order, to_show, columns):
       "height": 768
     })
     await page.goto('https://s.tradingview.com/embed-widget/screener/#%7B%0A%20%20%22width%22%3A%201100%2C%0A%20%20%22height%22%3A%20512%2C%0A%20%20%22defaultColumn%22%3A%20%22overview%22%2C%0A%20%20%22defaultScreen%22%3A%20%22general%22%2C%0A%20%20%22market%22%3A%20%22forex%22%2C%0A%20%20%22showToolbar%22%3A%20true%2C%0A%20%20%22colorTheme%22%3A%20%22light%22%2C%0A%20%20%22locale%22%3A%20%22en%22%0A%7D')
-    #await asyncio.sleep(1)
+    await asyncio.sleep(1)
     
     drop_box = await page.xpath("/html/body/div[1]/div[2]/div/div[2]/div[2]/div[1]")
     await drop_box[0].click()
@@ -60,7 +60,7 @@ async def do_browsing(order, to_show, columns):
 
     dropdown_remove = await page.xpath("/html/body/div[1]/div[2]/div/div[2]/div[3]")
     await dropdown_remove[0].click()
-    #await asyncio.sleep(1)
+    await asyncio.sleep(1)
 ########################################
     too_show = int(to_show) + 1
     xp = f'/html/body/div[1]/div[2]/div/div[3]/table/thead/tr/th[{too_show}]/div/div/div/div'
