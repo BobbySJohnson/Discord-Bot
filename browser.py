@@ -55,7 +55,7 @@ async def do_browsing(order, to_show, columns):
       "width": 1024,
       "height": 768
     })
-    await page.goto('https://s.tradingview.com/embed-widget/screener/#%7B%0A%20%20%22width%22%3A%201100%2C%0A%20%20%22height%22%3A%20512%2C%0A%20%20%22defaultColumn%22%3A%20%22overview%22%2C%0A%20%20%22defaultScreen%22%3A%20%22general%22%2C%0A%20%20%22market%22%3A%20%22forex%22%2C%0A%20%20%22showToolbar%22%3A%20true%2C%0A%20%20%22colorTheme%22%3A%20%22light%22%2C%0A%20%20%22locale%22%3A%20%22en%22%0A%7D')
+    await page.goto('https://s.tradingview.com/embed-widget/screener/#%7B%0A%20%20%22width%22%3A%201100%2C%0A%20%20%22height%22%3A%20512%2C%0A%20%20%22defaultColumn%22%3A%20%22overview%22%2C%0A%20%20%22defaultScreen%22%3A%20%22general%22%2C%0A%20%20%22market%22%3A%20%22forex%22%2C%0A%20%20%22showToolbar%22%3A%20true%2C%0A%20%20%22colorTheme%22%3A%20%22dark%22%2C%0A%20%20%22locale%22%3A%20%22en%22%0A%7D')
     await asyncio.sleep(1)
     
     drop_box = await page.xpath("/html/body/div[1]/div[2]/div/div[2]/div[2]/div[1]")
