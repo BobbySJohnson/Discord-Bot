@@ -6,7 +6,7 @@ async def start_chrome():
     global browser
     browser = await launch(headless=True, ignoreHTTPSErrors=True, args=['--no-sandbox', '--disable-setuid-sandbox'])
     page = await browser.newPage()
-    await page.goto("https://ifconfig.me")
+    await page.goto("https://example.com")
 
 
 async def take_screenshot(url, file_name, width, height):
@@ -17,13 +17,33 @@ async def take_screenshot(url, file_name, width, height):
       "height": height
     })
     await page.goto(url, {'waitUntil' : 'load'})
-    await asyncio.sleep(1)
+    await asyncio.sleep(0.5)
     await page.screenshot({'path': file_name})
     await page.close()
 
 async def take_screenshot_runner(url, file_name, width, height):
   task1 = asyncio.create_task(take_screenshot(url, file_name, width, height))
   await task1
+
+
+##### TECHNICAL ANALYSIS  ####
+
+async def take_screenshot_t(url, file_name, width, height):
+
+    page = await browser.newPage()
+    await page.setViewport({
+      "width": width,
+      "height": height
+    })
+    await page.goto(url, {'waitUntil' : 'load'})
+    await asyncio.sleep(2)
+    await page.screenshot({'path': file_name})
+    await page.close()
+
+async def take_screenshot_technical_analysis(url, file_name, width, height):
+  task1 = asyncio.create_task(take_screenshot_t(url, file_name, width, height))
+  await task1
+
 
 
 

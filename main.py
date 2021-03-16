@@ -15,17 +15,17 @@ async def all(ctx, exchange, pair, time_frame, *studies1):
     t1 = asyncio.create_task(t(ctx, exchange, pair, time_frame))
 
     if "m" in time_frame:
-        new_time_frame = int(time_frame.replace("m", ""))
+        time_frame = int(time_frame.replace("m", ""))
     elif "h" in time_frame:
-        new_time_frame = int(time_frame.replace("h", "")) * 60
+        time_frame = int(time_frame.replace("h", "")) * 60
 
     if len(studies1) == 0:
-        t2 = asyncio.create_task(c(ctx, exchange, pair, new_time_frame))
+        t2 = asyncio.create_task(c(ctx, exchange, pair, time_frame))
     else:
         t2 = asyncio.create_task(
-            c(ctx, exchange, pair, new_time_frame, *studies1))
-    await t1
+            c(ctx, exchange, pair, time_frame, *studies1))
     await t2
+    await t1
 
 
 @client.command()
@@ -55,7 +55,7 @@ async def t(ctx, exchange, pair, time_frame, *theme):
 
     url = f'https://s.tradingview.com/embed-widget/technical-analysis/?locale=en#%7B%0A%20%20%22interval%22%3A%20%22{time_frame}%22%2C%0A%20%20%22width%22%3A%20%22500%22%2C%0A%20%20%22isTransparent%22%3A%20false%2C%0A%20%20%22height%22%3A%20%22500%22%2C%0A%20%20%22symbol%22%3A%20%22{exchange}%3A{pair}%22%2C%0A%20%20%22showIntervalTabs%22%3A%20true%2C%0A%20%20%22locale%22%3A%20%22en%22%2C%0A%20%20%22colorTheme%22%3A%20%22{color}%22%0A%7D'
 
-    await take_screenshot_runner(url, "t.png", 500, 500)
+    await take_screenshot_technical_analysis(url, "t.png", 500, 500)
     await ctx.send(file=discord.File('t.png'))
 @client.command()
 async def th(ctx):
