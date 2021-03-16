@@ -101,7 +101,7 @@ async def do_browsing(order, to_show, columns):
 
     await asyncio.sleep(1)
     await page.screenshot({'path': 's.png'})
-    await browser.close()
+    await page.close()
 
 async def screener_runner(order, to_show, columns):
   task1 = asyncio.create_task(do_browsing(order, to_show, columns))
