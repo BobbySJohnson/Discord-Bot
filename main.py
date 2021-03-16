@@ -7,7 +7,7 @@ client = commands.Bot(command_prefix='.')
 
 @client.command()
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send(f'**pong** *`{int((client.latency * 1000))}ms`* 😎')
  
 
 @client.command()
