@@ -193,7 +193,7 @@ async def on_ready():
 async def on_message(message):
   if message.author.bot: return
   if message.content.startswith('.'):
-    await message.add_reaction('\N{THUMBS UP SIGN}')
+    await message.add_reaction('✔️')
   await client.process_commands(message)
 
 
