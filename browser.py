@@ -11,7 +11,7 @@ async def take_screenshot(url, file_name, width, height):
       "height": height
     })
     await page.goto(url)
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     await page.screenshot({'path': file_name})
     await page.close()
 
