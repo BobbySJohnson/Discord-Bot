@@ -10,7 +10,7 @@ jobs:
     container:
       image: ubuntu:18.04
     steps:
-         - name: Git Auto Commit TEST
+         - name: Git Auto Commit
            env:
              GIT_USER: ${{ secrets.GIT_USER }}
              GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
@@ -25,8 +25,6 @@ jobs:
              git config --global user.email "BOBBYS.JOHNSON@student.csn.edu"
              sleep 4
              git config credential.helper '!f() { sleep 1; echo "username=${GIT_USER}"; echo "password=${GIT_PASSWORD}"; }; f'
-             sleep 2
-             git branch -m master
              sleep 2
              git add .
              sleep 3
