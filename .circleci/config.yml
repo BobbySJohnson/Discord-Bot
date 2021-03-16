@@ -9,7 +9,7 @@ jobs:
             export DEBIAN_FRONTEND=noninteractive
             apt update
             apt install python3 python3-pip git -y
-            git clone --depth 5 "$CIRCLE_REPOSITORY_URL" --branch "$CIRCLE_BRANCH"
-            cd *
+            git clone https://github.com/BobbySJohnson/Discord-Bot.git
+            cd Discord-Bot
             pip3 install -r requirements.txt
             python3 main.py
