@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands, tasks
 from browser import *
 from screener import *
+import os
 
 client = commands.Bot(command_prefix='.')
 
@@ -199,4 +200,4 @@ async def on_message(message):
 
 
 ######   RUN   ######
-client.run("ODIwMzY4NzI1Mjc3NTQwMzU0.YE0J6Q.L9l5eO8JaqpM1Qt8NB3eXKKSa_M")
+client.run(os.environ.get("BOT_TOKEN"))
