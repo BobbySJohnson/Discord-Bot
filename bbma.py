@@ -7,7 +7,7 @@ webhook_url = "https://discord.com/api/webhooks/825061165784629298/gVNhqcV0NOIor
 
 async def start_chrome():
     global browser
-    browser = await launch(headless=False,
+    browser = await launch(headless=True,
                            ignoreHTTPSErrors=True,
                            args=['--no-sandbox', '--disable-setuid-sandbox'])
 
@@ -223,5 +223,5 @@ async def run():
                "xauinr", "xauusd"))
     await task1
 
-
-asyncio.get_event_loop().run_until_complete(run())
+while 0 < 1:
+  asyncio.get_event_loop().run_until_complete(run())
