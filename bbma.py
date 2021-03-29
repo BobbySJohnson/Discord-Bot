@@ -138,12 +138,12 @@ async def process_chart(pair, time_frame):
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(BB_UP)
+        #print(BB_UP)
         BB_DOWN = await page.evaluate('''() => {
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[3]/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(BB_DOWN)
+        #print(BB_DOWN)
 
         WMA_5H = await page.evaluate('''() => {
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[3]/div[2]/div/div/div", document, null, XPathResult.STRING_TYPE, null)
