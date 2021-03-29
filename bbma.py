@@ -20,7 +20,7 @@ async def process_chart(pair, time_frame):
     WMA_10H = 4
     WMA_10L = 4
     page = await browser.newPage()
-    await page.setViewport({"width": 800, "height": 500})
+    await page.setViewport({"width": 800, "height": 600})
     try:
         url = f'https://s.tradingview.com/widgetembed/?frameElementId=tradingview_33e44&symbol=fx%3A{pair}&interval={time_frame}&hidetoptoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=BB%40tv-basicstudies%1FMAWeighted%40tv-basicstudies%1FMAWeighted%40tv-basicstudies%1FMAWeighted%40tv-basicstudies%1FMAWeighted%40tv-basicstudies%1F&theme=light&style=1&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en'
         await page.goto(url, {'waitUntil': 'load'})
@@ -149,25 +149,25 @@ async def process_chart(pair, time_frame):
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[3]/div[2]/div/div/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(WMA_5H)
+        #print(WMA_5H)
 
         WMA_5L = await page.evaluate('''() => {
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[4]/div[2]/div/div/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(WMA_5L)
+        #print(WMA_5L)
 
         WMA_10H = await page.evaluate('''() => {
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[5]/div[2]/div/div/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(WMA_10H)
+        #print(WMA_10H)
 
         WMA_10L = await page.evaluate('''() => {
         var yolo = document.evaluate("/html/body/div[2]/div/div/div[1]/div/table/tr[1]/td[2]/div/div[1]/div[2]/div[2]/div[6]/div[2]/div/div/div", document, null, XPathResult.STRING_TYPE, null)
         return yolo.stringValue
       }''')
-        print(WMA_10L)
+        #print(WMA_10L)
 
         #await asyncio.sleep(3)
         #await page.screenshot({'path': "ss.png"})
